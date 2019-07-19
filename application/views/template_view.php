@@ -159,32 +159,50 @@
                     <li>
                         <a href="javascript:void(0);" class="menu-toggle" >
                             <i class="material-icons">dns</i>
-                            <span>Employee</span>
+                            <span>Master</span>
                         </a>
                         <ul class="ml-menu">
                     
                     <li>
-                        <a href="<?php echo base_url('karyawan'); ?>">
+                        <a href="<?php echo base_url('barang'); ?>">
                            <i class="material-icons">dns</i>
-                            <span>Karyawan</span>
+                            <span>Barang</span>
+                        </a>
+                    </li> 
+                    <li>
+                        <a href="<?php echo base_url('kategori_barang'); ?>">
+                           <i class="material-icons">dns</i>
+                            <span>Kategori Barang</span>
+                        </a>
+                    </li> 
+                    <li>
+                        <a href="<?php echo base_url('sub_kategori_barang'); ?>">
+                           <i class="material-icons">dns</i>
+                            <span>Sub Kategori Barang</span>
+                        </a>
+                    </li> 
+                    <li>
+                        <a href="<?php echo base_url('instansi'); ?>">
+                           <i class="material-icons">dns</i>
+                            <span>Instansi</span>
+                        </a>
+                    </li> 
+                    <li>
+                        <a href="<?php echo base_url('kategori_instansi'); ?>">
+                           <i class="material-icons">dns</i>
+                            <span>Kategori Instansi</span>
+                        </a>
+                    </li> 
+                    <li>
+                        <a href="<?php echo base_url('pegawai'); ?>">
+                           <i class="material-icons">dns</i>
+                            <span>Pegawai</span>
                         </a>
                     </li> 
                     <li>
                         <a href="<?php echo base_url('jabatan'); ?>">
                            <i class="material-icons">dns</i>
                             <span>Jabatan</span>
-                        </a>
-                    </li> 
-                    <li>
-                        <a href="<?php echo base_url('status'); ?>">
-                           <i class="material-icons">dns</i>
-                            <span>Status</span>
-                        </a>
-                    </li> 
-                    <li>
-                        <a href="<?php echo base_url('payroll'); ?>">
-                           <i class="material-icons">dns</i>
-                            <span>Payroll</span>
                         </a>
                     </li> 
                     <li>
@@ -206,42 +224,12 @@
                         <ul class="ml-menu">
                  
                     <li>
-                        <a href="<?php echo base_url('barang'); ?>">
+                        <a href="<?php echo base_url('pengeluaran_barang'); ?>">
                            <i class="material-icons">dns</i>
-                            <span>Barang</span>
+                            <span>Pengeluaran Barang</span>
                         </a>
                     </li>
-                    <li>
-                        <a href="<?php echo base_url('jenis'); ?>">
-                           <i class="material-icons">dns</i>
-                            <span>Jenis</span>
-                        </a>
-                    </li> 
-                    <li>
-                        <a href="<?php echo base_url('supplier'); ?>">
-                           <i class="material-icons">dns</i>
-                            <span>Supplier</span>
-                        </a>
-                    </li>
-                    <li>
-                        <a href="<?php echo base_url('pricelist'); ?>">
-                           <i class="material-icons">dns</i>
-                            <span>Pricelist</span>
-                        </a>
-                    </li> 
-                    <li>
-                        <a href="<?php echo base_url('PO'); ?>">
-                           <i class="material-icons">dns</i>
-                            <span>PO</span>
-                        </a>
-                    </li>
-                    <li>
-                        <a href="<?php echo base_url('SO'); ?>">
-                           <i class="material-icons">dns</i>
-                            <span>SO</span>
-                        </a>
-                    </li> 
-                     
+                   
                     
                         </ul>
                     </li>
@@ -255,15 +243,15 @@
                         <ul class="ml-menu">
                  
                     <li>
-                        <a href="<?php echo base_url('report_po'); ?>">
+                        <a href="<?php echo base_url('pengeluaran_barang'); ?>">
                            <i class="material-icons">dns</i>
-                            <span>PO</span>
+                            <span>Pengeluaran Barang</span>
                         </a>
                     </li>
                     <li>
-                        <a href="<?php echo base_url('report_so'); ?>">
+                        <a href="<?php echo base_url('stock_realtime'); ?>">
                            <i class="material-icons">dns</i>
-                            <span>SO</span>
+                            <span>Stock Realtime</span>
                         </a>
                     </li> 
                      
@@ -280,7 +268,7 @@
             <!-- Footer -->
             <div class="legal">
                 <div class="copyright">
-                    &copy; 2019 <a href="javascript:void(0);"> CV.Primaguna Hatta Asri
+                    &copy; <a href="javascript:void(0);"> Martools Inventory
                 </div>
             </div>
             <!-- #Footer -->
