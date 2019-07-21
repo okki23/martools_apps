@@ -65,7 +65,7 @@
                                     <div class="input-group">
                                                 <div class="form-line">
                                                     <input type="text" name="nama_kategori" id="nama_kategori" class="form-control" readonly="readonly" >
-                                                    <input type="text" name="id_kategori" id="id_kategori" readonly="readonly" >
+                                                    <input type="hidden" name="id_kategori" id="id_kategori" readonly="readonly" >
                                                     
                                                 </div>
                                                 <span class="input-group-addon">

@@ -10,7 +10,7 @@
                     <div class="card">
                         <div class="header">
                             <h2>
-                                Barang
+                                Instansi
                             </h2>
                             <br>
                             <a href="javascript:void(0);" id="addmodal" class="btn btn-primary waves-effect">  <i class="material-icons">add_circle</i>  Tambah Data </a>
@@ -23,9 +23,8 @@
   
 									<thead>
 										<tr> 
-											<th style="width:5%;">Kategori Barang</th>
-                                            <th style="width:5%;">Sub Kategori Barang</th>
-                                            <th style="width:5%;">Nama Barang</th>                                           
+											<th style="width:5%;">Kategori instansi</th>
+                                            <th style="width:5%;">Nama instansi</th>                                           
                                             <th style="width:10%;">Opsi</th> 
 										</tr>
 									</thead> 
@@ -55,44 +54,33 @@
                                     <input type="hidden" name="id" id="id"> 
                                     <div class="input-group">
                                                 <div class="form-line">
-                                                    <input type="text" name="nama_kategori" id="nama_kategori" class="form-control" readonly="readonly" >
-                                                    <input type="hidden" name="id_kategori" id="id_kategori" readonly="readonly" >
+                                                    <input type="text" name="nama_kategori_instansi" id="nama_kategori_instansi" class="form-control" readonly="readonly" >
+                                                    <input type="hidden" name="id_kategori_instansi" id="id_kategori_instansi" readonly="readonly" >
                                                     
                                                 </div>
                                                 <span class="input-group-addon">
-                                                    <button type="button" onclick="CariKategori();" class="btn btn-primary"> Pilih Kategori... </button>
+                                                    <button type="button" onclick="CariInstansi();" class="btn btn-primary"> Pilih Kategori Instansi... </button>
                                                 </span>
                                     </div>
-
-                                    <div class="input-group">
-                                                <div class="form-line">
-                                                    <input type="text" name="nama_sub_kategori" id="nama_sub_kategori" class="form-control" readonly="readonly" >
-                                                    <input type="hidden" name="id_sub_kategori" id="id_sub_kategori" readonly="readonly" >
-                                                    
-                                                </div>
-                                                <span class="input-group-addon">
-                                                    <button type="button" onclick="CariSubKategori();" class="btn btn-primary"> Pilih Sub Kategori... </button>
-                                                </span>
-                                    </div>
-
+ 
 									<div class="form-group">
                                         <div class="form-line">
-                                            <input type="text" name="nama_barang" id="nama_barang" class="form-control" placeholder="Nama Barang" />
+                                            <input type="text" name="nama_instansi" id="nama_instansi" class="form-control" placeholder="Nama instansi" />
                                         </div>
                                     </div>
                                     <div class="form-group">
                                         <div class="form-line">
-                                            <input type="text" name="qty_jkt" id="qty_jkt" class="form-control" placeholder="Qty Jakarta" />
+                                            <input type="text" name="alamat" id="alamat" class="form-control" placeholder="Alamat" />
                                         </div>
                                     </div>
                                     <div class="form-group">
                                         <div class="form-line">
-                                            <input type="text" name="qty_subang" id="qty_subang" class="form-control" placeholder="Qty Subang" />
+                                            <input type="text" name="telp" id="telp" class="form-control" placeholder="Telp" />
                                         </div>
                                     </div>
                                     <div class="form-group">
                                         <div class="form-line">
-                                            <input type="text" name="keterangan" id="keterangan" class="form-control" placeholder="Keterangan" />
+                                            <input type="text" name="pic" id="pic" class="form-control" placeholder="PIC" />
                                         </div>
                                     </div>
                                      
@@ -110,7 +98,7 @@
 
 
     <!-- modal cari kategori -->
-    <div class="modal fade" id="CariKategoriModal" tabindex="-1" role="dialog">
+    <div class="modal fade" id="CariInstansiModal" tabindex="-1" role="dialog">
                 <div class="modal-dialog modal-lg" role="document">
                     <div class="modal-content">
                         <div class="modal-header">
@@ -122,14 +110,14 @@
                                 <br>
                                 <hr>
 
-                                 <table width="100%" class="table table-bordered table-striped table-hover " id="daftar_kategori" >
+                                 <table width="100%" class="table table-bordered table-striped table-hover " id="daftar_kategori_instansi" >
   
                                     <thead>
                                         <tr>  
-                                            <th style="width:98%;">Kategori </th> 
+                                            <th style="width:98%;">Nama Kategori Instansi </th> 
                                          </tr>
                                     </thead> 
-                                    <tbody id="daftar_kategorix">
+                                    <tbody id="daftar_kategori_instansix">
 
                                 </tbody>
                                 </table> 
@@ -139,37 +127,7 @@
                 </div>
     </div>
 
-
-    <!-- modal cari subkategori -->
-    <div class="modal fade" id="CariSubKategoriModal" tabindex="-1" role="dialog">
-                <div class="modal-dialog modal-lg" role="document">
-                    <div class="modal-content">
-                        <div class="modal-header">
-                            <h4 class="modal-title" >Cari Sub Kategori</h4>
-                        </div>
-                        <div class="modal-body">
-                                <button type="button" class="btn btn-danger" data-dismiss="modal">X Tutup</button>
-
-                                <br>
-                                <hr>
-
-                                 <table width="100%" class="table table-bordered table-striped table-hover " id="tabel_sub_kategori" > 
-                                    <thead>
-                                        <tr>  
-                                            <th style="width:15%;">Nama Sub Kategori</th> 
-                                            <th style="width:15%;">Action</th> 
-                                         </tr>
-                                    </thead>
-                                    <tbody>
-                                        
-                                    </tbody>  
-                                </table>  
-                       </div>
-                     
-                    </div>
-                </div>
-    </div>
-
+ 
     
      <!-- modal detail -->
      <div class="modal fade" id="DetailModal" tabindex="-1" role="dialog">
@@ -184,36 +142,31 @@
                                 <hr>
                                 <table class="table table-bordered table-hovered">
                                 <tr>
-                                    <td>Nama Barang</td>
+                                    <td>Nama instansi</td>
                                     <td>:</td>
-                                    <td><div id="nama_barangdtl"> </div></td>
+                                    <td><div id="nama_instansidtl"> </div></td>
                                 </tr>
                                 <tr>
-                                    <td>Kategori Barang</td>
+                                    <td>Kategori instansi</td>
                                     <td>:</td>
-                                    <td><div id="nama_kategoridtl"> </div></td>
+                                    <td><div id="nama_kategori_instansidtl"> </div></td>
                                 </tr>
                                 <tr>
-                                    <td>Sub Kategori Barang</td>
+                                    <td>Alamat Instansi</td>
                                     <td>:</td>
-                                    <td><div id="nama_sub_kategoridtl"> </div></td>
+                                    <td><div id="alamatdtl"> </div></td>
                                 </tr>
                                 <tr>
-                                    <td>Qty Jakarta</td>
+                                    <td>Telp Instansi</td>
                                     <td>:</td>
-                                    <td><div id="qty_jktdtl"> </div></td>
+                                    <td><div id="telpdtl"> </div></td>
                                 </tr>
                                 <tr>
-                                    <td>Qty Subang</td>
+                                    <td>PIC Instansi</td>
                                     <td>:</td>
-                                    <td><div id="qty_subangdtl"> </div></td>
+                                    <td><div id="picdtl"> </div></td>
                                 </tr>
-                                <tr>
-                                    <td>Keterangan</td>
-                                    <td>:</td>
-                                    <td><div id="keterangandtl"> </div></td>
-                                </tr>
-                                
+                               
                                 </table>
                                  
                        </div>
@@ -233,92 +186,42 @@
         $("#DetailModal").modal({backdrop: 'static', keyboard: false,show:true});
  
 		$.ajax({
-			 url:"<?php echo base_url(); ?>barang/get_data_edit/"+id,
+			 url:"<?php echo base_url(); ?>instansi/get_data_edit/"+id,
 			 type:"GET",
 			 dataType:"JSON", 
 			 success:function(result){ 
                   
 				 //$("#DetailModal").modal('show'); 
-				 $("#nama_barangdtl").html(result.nama_barang);
-                 $("#nama_kategoridtl").html(result.nama_kategori);
-                 $("#nama_sub_kategoridtl").html(result.nama_sub_kategori); 
-                 $("#qty_jktdtl").html(result.qty_jkt);
-                 $("#qty_subangdtl").html(result.qty_subang);
-                 $("#keterangandtl").html(result.keterangan);  
-                
+                 $("#nama_instansidtl").html(result.nama_instansi);
+                 $("#alamatdtl").html(result.alamat);
+                 $("#telpdtl").html(result.telp);
+                 $("#picdtl").html(result.pic);
+                 $("#nama_kategori_instansidtl").html(result.nama_kategori_instansi);
 			 }
 		 });
     } 
-   
-
-    function GetDataSubKategori(id){
-        console.log(id);
-        $.get("<?php echo base_url('barang/fetch_nama_sub_kategori_row/'); ?>"+id,function(result){
-            console.log(result);
-            var parse = JSON.parse(result);
-            $("#id_sub_kategori").val(id);
-            $("#nama_sub_kategori").val(parse.nama_sub_kategori);
-            $("#CariSubKategoriModal").modal('hide');
-        });
-
-    }
-
- 
-    function CariSubKategori(){
-        $("#CariSubKategoriModal").modal({backdrop: 'static', keyboard: false,show:true});
-
-         var id_kategori = $("#id_kategori").val();
-        
-        $('#tabel_sub_kategori').DataTable({
-            "processing" : true,
-            "ajax" : {
-                "url" : "<?php echo base_url('barang/fetch_sub_kategori_barang'); ?>",
-                "data":{id_kategori},
-                "type":"POST",
-                dataSrc : '',
-
-            },
- 
-
-            "columns" : [ {
-                "data" : "nama"
-            },{
-                "data" : "action"
-            }],
-
-            "rowReorder": {
-                "update": false
-            },
-
-            "destroy":true,
-        });
     
- 
-    } 
-
-
-
     // cari direktorat
-    $('#daftar_kategori').DataTable( {
-            "ajax": "<?php echo base_url(); ?>kategori_barang/fetch_kategori_barang"           
+    $('#daftar_kategori_instansi').DataTable( {
+            "ajax": "<?php echo base_url(); ?>kategori_instansi/fetch_kategori_instansi"           
     });
 
      
      
-    function CariKategori(){
-        $("#CariKategoriModal").modal({backdrop: 'static', keyboard: false,show:true});
+    function CariInstansi(){
+        $("#CariInstansiModal").modal({backdrop: 'static', keyboard: false,show:true});
     } 
    
         
-        var daftar_kategori = $('#daftar_kategori').DataTable();
+        var daftar_kategori_instansi = $('#daftar_kategori_instansi').DataTable();
      
-        $('#daftar_kategori tbody').on('click', 'tr', function () {
+        $('#daftar_kategori_instansi tbody').on('click', 'tr', function () {
             
-            var content = daftar_kategori.row(this).data()
+            var content = daftar_kategori_instansi.row(this).data()
             console.log(content);
-            $("#nama_kategori").val(content[0]);
-            $("#id_kategori").val(content[2]);
-            $("#CariKategoriModal").modal('hide');
+            $("#nama_kategori_instansi").val(content[0]);
+            $("#id_kategori_instansi").val(content[2]);
+            $("#CariInstansiModal").modal('hide');
         } );
 
 
@@ -327,21 +230,19 @@
 		$("#defaultModal").modal('show');
  
 		$.ajax({
-			 url:"<?php echo base_url(); ?>barang/get_data_edit/"+id,
+			 url:"<?php echo base_url(); ?>instansi/get_data_edit/"+id,
 			 type:"GET",
 			 dataType:"JSON", 
 			 success:function(result){  
 				 $("#defaultModal").modal('show'); 
 				 $("#id").val(result.id);
-                 $("#nama_barang").val(result.nama_barang);
-                 $("#qty_jkt").val(result.qty_jkt);
-                 $("#qty_subang").val(result.qty_subang);
-                 $("#qty").val(result.qty);
-                 $("#keterangan").val(result.keterangan); 
-                 $("#id_kategori").val(result.id_kategori);
-                 $("#nama_kategori").val(result.nama_kategori); 
-                 $("#id_sub_kategori").val(result.id_sub_kategori);
-                 $("#nama_sub_kategori").val(result.nama_sub_kategori); 
+                 $("#nama_instansi").val(result.nama_instansi);
+                 $("#alamat").val(result.alamat);
+                 $("#telp").val(result.telp);
+                 $("#pic").val(result.pic);
+                 $("#id_kategori_instansi").val(result.id_kategori_instansi); 
+                 $("#nama_kategori_instansi").val(result.nama_kategori_instansi);
+              
                   
 			 }
 		 });
@@ -357,7 +258,7 @@
         {
         // ajax delete data to database
         $.ajax({
-            url : "<?php echo base_url('barang/hapus_data')?>/"+id,
+            url : "<?php echo base_url('instansi/hapus_data')?>/"+id,
             type: "GET",
             dataType: "JSON",
             success: function(data)
@@ -392,7 +293,7 @@
  
                  //transaksi dibelakang layar
                  $.ajax({
-                 url:"<?php echo base_url(); ?>barang/simpan_data",
+                 url:"<?php echo base_url(); ?>instansi/simpan_data",
                  type:"POST",
                  data:formData,
                  contentType:false,  
@@ -438,7 +339,7 @@
 		$('#example').append('<caption style="caption-side: top">   </caption>');
 		$('#example').DataTable({
              
-			"ajax": "<?php echo base_url(); ?>barang/fetch_barang", 
+			"ajax": "<?php echo base_url(); ?>instansi/fetch_instansi", 
 		});
 
 

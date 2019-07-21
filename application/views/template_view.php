@@ -281,6 +281,7 @@
              
                     <div class="demo-settings">
                         <p> Hai <?php echo $this->session->userdata('username') . " !"; ?> </p>
+                        <p> Status :  <?php echo level_help($this->session->userdata('level')); ?> </p>
                         <ul class="demo-choose-skin">
                        
                          <a href="<?php echo base_url('login/logout'); ?>">

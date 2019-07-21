@@ -24,9 +24,7 @@
                                     <thead>
                                         <tr>
                                            
-                                            <th style="width:5%;">Jabatan</th>
-                                            <th style="width:5%;">Gapok</th>   
-                                             
+                                            <th style="width:5%;">Jabatan</th> 
                                             <th style="width:5%;">Opsi</th> 
                                         </tr>
                                     </thead> 
@@ -60,13 +58,7 @@
                                             <input type="text" name="nama_jabatan" id="nama_jabatan" class="form-control" placeholder="Jabatan" />
                                         </div>
                                     </div>
-                                    <div class="form-group">
-                                        <div class="form-line">
-                                            <input type="text" name="gapok" id="gapok" class="form-control" placeholder="Gapok (Ex: 1000000)" />
-                                        </div>
-                                    </div>
-                                  
-                                     
+                             
 
                                    <button type="button" onclick="Simpan_Data();" class="btn btn-success waves-effect"> <i class="material-icons">save</i> Simpan</button>
 
@@ -108,12 +100,8 @@ tr.shown td.details-control {
              success:function(result){ 
                   console.log(result);
                  $("#defaultModal").modal('show'); 
-                 $("#id").val(result.id);
-               
-                 $("#nama_jabatan").val(result.nama_jabatan);
-                 $("#gapok").val(result.gapok);
-                
-                  
+                 $("#id").val(result.id); 
+                 $("#nama_jabatan").val(result.nama_jabatan); 
              }
          });
      }
@@ -170,10 +158,7 @@ tr.shown td.details-control {
             alert("Satuan Belum anda masukkan!");
             $("#nama_jabatan").parents('.form-line').addClass('focused error');
             $("#id_satuan").focus();
-        }else if(gapok == ''){
-            alert("gapok Belum anda masukkan!");
-            $("#gapok").parents('.form-line').addClass('focused error');
-            $("#gapok").focus();
+     
         }else{
 
             //transaksi dibelakang layar
@@ -209,39 +194,7 @@ tr.shown td.details-control {
 
     }
       
- 
-var g_dataFull = [];
-
-/* Formatting function for row details - modify as you need */
-function format ( d ) {
-    var html = '<table cellpadding="5" cellspacing="0" border="0" style="padding-left:50px;" width="100%">';
-      
-    var dataChild = [];
-    var hasChildren = false;
-    $.each(g_dataFull, function(){
-       if(this.id_parent_jabatan === d.id){
-          html += 
-            '<tr><td>' + $('<div>').text(this.nama_pelayanan).html() + '</td>' + 
-            '<td>' +  $('<div>').text(this.nama_komp_biaya).html() + '</td>' + 
-            '<td>' +  $('<div>').text(this.nama_jabatan).html() +'</td>' + 
-            '<td>' +  $('<div>').text(this.nama_satuan).html() + '</td>'+
-            '<td>' +  $('<div>').text(this.action).html() + '</td></tr>';
-
-         
-          hasChildren = true;
-       }
-    });
   
-    if(!hasChildren){
-        html += '<tr><td>There are no items in this view.</td></tr>';
-     
-    }
-  
- 
-    html += '</table>';
-    return html;
-}
- 
 
        $(document).ready(function() {
            

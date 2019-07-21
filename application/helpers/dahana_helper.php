@@ -3,13 +3,10 @@ if(!function_exists('level_help')){
 	function level_help($params){
         $res = '';
 		if($params == 1){
-			$res = 'Super Admin';
-		}else if($params == 2){
-			$res = 'Admin PPPU';
-        }else if($params == 3){
-            $res = 'Sales';
+			$res = 'Admin';
+		}else{
+            $res = 'User'; 
         }
-
 		return $res;
     }
 }

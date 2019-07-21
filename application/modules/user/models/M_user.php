@@ -5,7 +5,7 @@ class M_user extends Parent_Model {
  
 
       var $nama_tabel = 'm_user';
-      var $daftar_field = array('id','username','password','id_karyawan');
+      var $daftar_field = array('id','username','password','id_pegawai','level');
       var $primary_key = 'id';
 
 	  
@@ -15,7 +15,7 @@ class M_user extends Parent_Model {
   }
   public function fetch_user(){   
 		   $getdata = $this->db->query('select a.*,b.nama from m_user a
-               left join m_karyawan b on b.id = a.id_karyawan')->result();
+               left join m_pegawai b on b.id = a.id_pegawai')->result();
 		   $data = array();  
 		   $no = 1;
            foreach($getdata as $row)  

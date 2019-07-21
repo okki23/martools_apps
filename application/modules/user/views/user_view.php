@@ -60,12 +60,12 @@
                                     </div>
                                     <div class="input-group">
                                                 <div class="form-line">
-                                                    <input type="text" name="nama_karyawan" id="nama_karyawan" class="form-control" readonly="readonly" >
-                                                    <input type="hidden" name="id_karyawan" id="id_karyawan" readonly="readonly">
+                                                    <input type="text" name="nama_pegawai" id="nama_pegawai" class="form-control" readonly="readonly" >
+                                                    <input type="hidden" name="id_pegawai" id="id_pegawai" readonly="readonly">
                                                     
                                                 </div>
                                                 <span class="input-group-addon">
-                                                    <button type="button" onclick="CariKaryawan();" class="btn btn-primary"> Pilih Karyawan... </button>
+                                                    <button type="button" onclick="CariKaryawan();" class="btn btn-primary"> Pilih Pegawai ... </button>
                                                 </span>
                                     </div>           
                                     <div class="form-group">
@@ -73,6 +73,18 @@
                                             <span class="label label-danger">* Kosongkan Apabila Tidak Mengganti Password </span>
                                             <input type="password" name="password" id="password" class="form-control" placeholder="Password" /> 
                                         </div>
+                                    </div>
+
+                                    <div class="form-group">
+                                    
+                                        <label> User Type  </label>
+                                        <br>
+                                        <input type="hidden" name="level" id="level">
+
+                                        <button type="button" id="adminbtn" class="btn btn-default waves-effect "> Admin </button>
+
+                                        <button type="button" id="userbtn" class="btn btn-default waves-effect "> User </button>
+                                    
                                     </div>
                                  
 
@@ -124,11 +136,26 @@
  
    <script type="text/javascript">
     
+     $("#adminbtn").on("click",function(){
+        $("#level").val('1');
+        $(this).attr('class','btn btn-primary');
+        $("#userbtn").attr('class','btn btn-default');
+
+    });
+
+    $("#userbtn").on("click",function(){
+        $("#level").val('2');
+       $(this).attr('class','btn btn-primary');
+        $("#adminbtn").attr('class','btn btn-default');
+
+         
+    });
+
     function CariKaryawan(){
         $("#CariKaryawanModal").modal({backdrop: 'static', keyboard: false,show:true});
     } 
     $('#daftar_karyawan').DataTable( {
-            "ajax": "<?php echo base_url(); ?>karyawan/fetch_karyawan"           
+            "ajax": "<?php echo base_url(); ?>pegawai/fetch_pegawai"           
     });
 
     var daftar_karyawan = $('#daftar_karyawan').DataTable();
@@ -137,8 +164,8 @@
          
          var content = daftar_karyawan.row(this).data()
          console.log(content);
-         $("#nama_karyawan").val(content[1]);
-         $("#id_karyawan").val(content[4]);
+         $("#nama_pegawai").val(content[1]);
+         $("#id_pegawai").val(content[4]);
          $("#CariKaryawanModal").modal('hide');
      } );
        
@@ -154,8 +181,17 @@
                  $("#defaultModal").modal('show'); 
                  $("#id").val(result.id);
                  $("#username").val(result.username); 
-                 $("#id_karyawan").val(result.id_karyawan);
-                 $("#nama_karyawan").val(result.nama); 
+                 $("#id_pegawai").val(result.id_pegawai);
+                 $("#nama_pegawai").val(result.nama); 
+                 $("#level").val(result.level); 
+
+                 if(result.level == '1'){
+                    $("#adminbtn").attr('class','btn btn-primary');
+                    $("#userbtn").attr('class','btn btn-default');
+                 }else{
+                    $("#adminbtn").attr('class','btn btn-default');
+                    $("#userbtn").attr('class','btn btn-primary');
+                 }
              }
          });
      }
