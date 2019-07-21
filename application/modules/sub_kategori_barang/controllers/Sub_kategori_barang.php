@@ -1,15 +1,15 @@
 <?php
 defined('BASEPATH') OR exit('No direct script access allowed');
  
-class Karyawan extends Parent_Controller {
+class Sub_kategori_barang extends Parent_Controller {
   
-  var $nama_tabel = 'm_karyawan';
-  var $daftar_field = array('id','nip','nama','alamat','telp','email','id_jabatan','id_status');
-  var $primary_key = 'id'; 
+	var $nama_tabel = 'm_sub_kategori';
+	var $daftar_field = array('id','id_kategori','nama_sub_kategori');
+	var $primary_key = 'id';
   
  	public function __construct(){
  		parent::__construct();
- 		$this->load->model('m_karyawan'); 
+ 		$this->load->model('m_sub_kategori_barang'); 
 		if(!$this->session->userdata('username')){
 		   echo "<script language=javascript>
 				 alert('Anda tidak berhak mengakses halaman ini!');
@@ -21,24 +21,24 @@ class Karyawan extends Parent_Controller {
  
   	public function index(){
   		$data['judul'] = $this->data['judul']; 
-  		$data['konten'] = 'karyawan/karyawan_view';
+  		$data['konten'] = 'sub_kategori_barang/sub_kategori_barang_view';
   		$this->load->view('template_view',$data);		
      
   	}
  
  
-  	public function fetch_karyawan(){  
-       $getdata = $this->m_karyawan->fetch_karyawan();
+  	public function fetch_sub_kategori_barang(){  
+       $getdata = $this->m_sub_kategori_barang->fetch_sub_kategori_barang();
        echo json_encode($getdata);   
   	}
 
   	public function fetch_jabatan(){  
-       $getdata = $this->m_karyawan->fetch_jabatan();
+       $getdata = $this->m_sub_kategori_barang->fetch_jabatan();
        echo json_encode($getdata);   
   	}  
 
     public function fetch_status(){  
-       $getdata = $this->m_karyawan->fetch_status();
+       $getdata = $this->m_sub_kategori_barang->fetch_status();
        echo json_encode($getdata);   
     }  
   
@@ -46,9 +46,8 @@ class Karyawan extends Parent_Controller {
 	 
 	public function get_data_edit(){
 		$id = $this->uri->segment(3);
-		$sql = " select a.*,b.nama_jabatan,c.nama_status from m_karyawan a 
-    left join m_jabatan b on b.id = a.id_jabatan
-    left join m_status c on c.id = a.id_status where a.id = '".$id."' ";
+		$sql = "select a.*,b.nama_kategori from m_sub_kategori a
+		left join m_kategori b on b.id = a.id_kategori where a.id = '".$id."' ";
 
 		$get = $this->db->query($sql)->row();
 		echo json_encode($get,TRUE);
@@ -58,7 +57,7 @@ class Karyawan extends Parent_Controller {
 		$id = $this->uri->segment(3);  
     
 
-    $sqlhapus = $this->m_karyawan->hapus_data($id);
+    $sqlhapus = $this->m_sub_kategori_barang->hapus_data($id);
 		
 		if($sqlhapus){
 			$result = array("response"=>array('message'=>'success'));
@@ -72,12 +71,12 @@ class Karyawan extends Parent_Controller {
 	public function simpan_data(){
     
     
-    $data_form = $this->m_karyawan->array_from_post($this->daftar_field);
+    $data_form = $this->m_sub_kategori_barang->array_from_post($this->daftar_field);
 
     $id = isset($data_form['id']) ? $data_form['id'] : NULL; 
  
 
-    $simpan_data = $this->m_karyawan->simpan_data($data_form,$this->nama_tabel,$this->primary_key,$id);
+    $simpan_data = $this->m_sub_kategori_barang->simpan_data($data_form,$this->nama_tabel,$this->primary_key,$id);
  
 		if($simpan_data){
 			$result = array("response"=>array('message'=>'success'));

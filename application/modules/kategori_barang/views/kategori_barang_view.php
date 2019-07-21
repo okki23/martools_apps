@@ -10,7 +10,7 @@
                     <div class="card">
                         <div class="header">
                             <h2>
-                                Satuan
+                                Kategori Barang
                             </h2>
                             <br>
                             <a href="javascript:void(0);" id="addmodal" class="btn btn-primary waves-effect">  <i class="material-icons">add_circle</i>  Tambah Data </a>
@@ -23,11 +23,8 @@
   
 									<thead>
 										<tr>
-											<th style="width:5%;">No</th>
-                                            
-											<th style="width:10%;">Nama Satuan</th>
-											 
-							 
+										 
+											<th style="width:10%;">Nama Kategori</th> 
 											<th style="width:5%;">Opsi</th> 
 										</tr>
 									</thead> 
@@ -58,7 +55,7 @@
 									 
 									<div class="form-group">
                                         <div class="form-line">
-                                            <input type="text" name="nama_satuan" id="nama_satuan" class="form-control" placeholder="Nama Satuan" />
+                                            <input type="text" name="nama_kategori" id="nama_kategori" class="form-control" placeholder="Kategori Barang" />
                                         </div>
                                     </div>
 									 
@@ -83,14 +80,14 @@
 		$("#defaultModal").modal('show');
  
 		$.ajax({
-			 url:"<?php echo base_url(); ?>satuan/get_data_edit/"+id,
+			 url:"<?php echo base_url(); ?>kategori_barang/get_data_edit/"+id,
 			 type:"GET",
 			 dataType:"JSON", 
 			 success:function(result){ 
                   
 				 $("#defaultModal").modal('show'); 
 				 $("#id").val(result.id); 
-                 $("#nama_satuan").val(result.nama_satuan);
+                 $("#nama_kategori").val(result.nama_kategori);
               
                   
 			 }
@@ -107,7 +104,7 @@
         {
         // ajax delete data to database
         $.ajax({
-            url : "<?php echo base_url('satuan/hapus_data')?>/"+id,
+            url : "<?php echo base_url('kategori_barang/hapus_data')?>/"+id,
             type: "GET",
             dataType: "JSON",
             success: function(data)
@@ -140,10 +137,10 @@
 		//setting semua data dalam form dijadikan 1 variabel 
 		 var formData = new FormData($('#user_form')[0]); 
  
-         var nama_satuan = $("#nama_satuan").val(); 
+         var nama_kategori_barang = $("#nama_kategori_barang").val(); 
             //transaksi dibelakang layar
             $.ajax({
-             url:"<?php echo base_url(); ?>satuan/simpan_data",
+             url:"<?php echo base_url(); ?>kategori_barang/simpan_data",
              type:"POST",
              data:formData,
              contentType:false,  
@@ -180,7 +177,7 @@
 		 
 		
 		$('#example').DataTable( {
-			"ajax": "<?php echo base_url(); ?>satuan/fetch_satuan" 
+			"ajax": "<?php echo base_url(); ?>kategori_barang/fetch_kategori_barang" 
 		});
 	 
 	 

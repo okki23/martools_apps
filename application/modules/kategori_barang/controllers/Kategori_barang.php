@@ -1,15 +1,15 @@
 <?php
 defined('BASEPATH') OR exit('No direct script access allowed');
  
-class satuan extends Parent_Controller {
+class kategori_barang extends Parent_Controller {
  
-  var $nama_tabel = 'm_satuan';
-  var $daftar_field = array('id', 'nama_satuan');
+  var $nama_tabel = 'm_kategori';
+  var $daftar_field = array('id', 'nama_kategori');
   var $primary_key = 'id';
   
  	public function __construct(){
  		parent::__construct();
- 		$this->load->model('m_satuan'); 
+ 		$this->load->model('m_kategori_barang'); 
 		if(!$this->session->userdata('username')){
 		   echo "<script language=javascript>
 				 alert('Anda tidak berhak mengakses halaman ini!');
@@ -20,13 +20,13 @@ class satuan extends Parent_Controller {
  
 	public function index(){
 		$data['judul'] = $this->data['judul']; 
-		$data['konten'] = 'satuan/satuan_view';
+		$data['konten'] = 'kategori_barang/kategori_barang_view';
 		$this->load->view('template_view',$data);		
    
 	}
  
-  public function fetch_satuan(){  
-       $getdata = $this->m_satuan->fetch_satuan();
+  public function fetch_kategori_barang(){  
+       $getdata = $this->m_kategori_barang->fetch_kategori_barang();
        echo json_encode($getdata);   
   }  
 	 
@@ -40,7 +40,7 @@ class satuan extends Parent_Controller {
 		$id = $this->uri->segment(3);  
     
 
-    $sqlhapus = $this->m_satuan->hapus_data($id);
+    $sqlhapus = $this->m_kategori_barang->hapus_data($id);
 		
 		if($sqlhapus){
 			$result = array("response"=>array('message'=>'success'));
@@ -54,12 +54,12 @@ class satuan extends Parent_Controller {
 	public function simpan_data(){
     
     
-    $data_form = $this->m_satuan->array_from_post($this->daftar_field);
+    $data_form = $this->m_kategori_barang->array_from_post($this->daftar_field);
 
     $id = isset($data_form['id']) ? $data_form['id'] : NULL; 
  
 
-    $simpan_data = $this->m_satuan->simpan_data($data_form,$this->nama_tabel,$this->primary_key,$id);
+    $simpan_data = $this->m_kategori_barang->simpan_data($data_form,$this->nama_tabel,$this->primary_key,$id);
  
 		if($simpan_data){
 			$result = array("response"=>array('message'=>'success'));
