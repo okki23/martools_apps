@@ -12,6 +12,7 @@ class M_barang extends Parent_Model {
         parent::__construct();
         $this->load->database();
   }
+  
   public function fetch_barang(){
        $sql = "select a.*,b.nama_kategori,c.nama_sub_kategori from m_barang a
        left join m_kategori b on b.id = a.id_kategori
@@ -31,6 +32,8 @@ class M_barang extends Parent_Model {
                 <a href="javascript:void(0)" class="btn btn-warning btn-xs waves-effect" id="edit" onclick="Ubah_Data('.$row->id.');" > <i class="material-icons">create</i> Ubah </a>  &nbsp; 
                 <a href="javascript:void(0)" id="delete" class="btn btn-danger btn-xs waves-effect" onclick="Hapus_Data('.$row->id.');" > <i class="material-icons">delete</i> Hapus </a>  &nbsp;';  
                 $sub_array[] = $row->id;
+                $sub_array[] = $row->qty_jkt;
+                $sub_array[] = $row->qty_subang;
                
                 $data[] = $sub_array;  
                 $no++;

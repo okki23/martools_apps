@@ -26,7 +26,7 @@
 
     <!-- Custom Css -->
     <link href="<?php echo base_url(); ?>assets/css/style.css" rel="stylesheet">
- 
+    <link href="<?php echo base_url(); ?>assets/css/sweetalert.css" rel="stylesheet">
    <!--  <link href="<?php echo base_url(); ?>assets/css/orgchart.css" rel="stylesheet"> -->
     <link href="<?php echo base_url(); ?>assets/plugins/bootstrap-material-datetimepicker/css/bootstrap-material-datetimepicker.css" rel="stylesheet" />
 
@@ -44,6 +44,7 @@
     <!-- Bootstrap Core Js -->
     <script src="<?php echo base_url(); ?>assets/plugins/bootstrap/js/bootstrap.js"></script>
 
+    <script src="<?php echo base_url(); ?>assets/js/sweetalert.js"></script>
     <!-- Select Plugin Js -->
     <script src="<?php echo base_url(); ?>assets/plugins/bootstrap-select/js/bootstrap-select.js"></script>
 
@@ -65,16 +66,10 @@
     <script src="<?php echo base_url(); ?>js/buttons.html5.min.js"></script>
     <script src="<?php echo base_url(); ?>js/buttons.print.min.js"></script>
     <script src="<?php echo base_url(); ?>js/buttons.colVis.min.js"></script>
-    <script src="<?php echo base_url(); ?>js/filterDropDown.js"></script>
-
- 
-
-    
+    <script src="<?php echo base_url(); ?>js/filterDropDown.js"></script> 
     <script src="<?php echo base_url(); ?>assets/js/dataTables.rowsGroup.js"></script>
     <script src="<?php echo base_url(); ?>assets/plugins/jquery-datatable/skin/bootstrap/js/dataTables.bootstrap.js"></script> 
-
-  
-
+ 
     <!-- Custom Js -->
     <script src="<?php echo base_url(); ?>assets/js/jquery.numeric.js"></script>
     <script src="<?php echo base_url(); ?>assets/js/admin.js"></script>
@@ -94,7 +89,7 @@
     <script type="text/javascript">
      //$("#wrapper").toggleClass("toggled");
     </script>
-   
+     
 </head>
 
 <body class="theme-red">
@@ -280,15 +275,20 @@
             <div class="tab-content">
              
                     <div class="demo-settings">
-                        <p> Hai <?php echo $this->session->userdata('username') . " !"; ?> </p>
-                        <p> Status :  <?php echo level_help($this->session->userdata('level')); ?> </p>
+                        <p> Welcome <?php echo $this->session->userdata('username') . " !"; ?> </p>
+                        <p> Level :  <?php echo level_help($this->session->userdata('level')); ?> </p>
+                         
+                        <div align="center">
+                            <img src="<?php echo base_url('upload/'.$this->session->userdata('foto')); ?>" style="width:100px; height:100px;">
+                        </div>
+ 
                         <ul class="demo-choose-skin">
                        
                          <a href="<?php echo base_url('login/logout'); ?>">
                         <li>
                           
                            <i class="material-icons">power_settings_new</i>
-                            <span>Keluar</span>
+                            <span align="center">Keluar</span>
                          
                         </li>
                           </a>
