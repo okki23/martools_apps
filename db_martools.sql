@@ -11,7 +11,7 @@
  Target Server Version : 100316
  File Encoding         : 65001
 
- Date: 23/07/2019 16:14:43
+ Date: 25/07/2019 06:38:15
 */
 
 SET NAMES utf8mb4;
@@ -37,7 +37,7 @@ CREATE TABLE `m_barang`  (
 -- ----------------------------
 INSERT INTO `m_barang` VALUES (1, 'Minyak Angin Cap Kapak', '3', '1', 10, 10, 'OK');
 INSERT INTO `m_barang` VALUES (2, 'Minyak Bimoli', '3', '1', 200, 690, 'OKS');
-INSERT INTO `m_barang` VALUES (3, 'LC Cool V8', '4', '3', 40, 39, 'OKES');
+INSERT INTO `m_barang` VALUES (3, 'LC Cool V8', '4', '3', 40, 31, 'OKES');
 
 -- ----------------------------
 -- Table structure for m_instansi
@@ -182,13 +182,12 @@ CREATE TABLE `t_pengeluaran`  (
   `id_pegawai` int(10) NULL DEFAULT NULL,
   `date_assign` date NULL DEFAULT NULL,
   PRIMARY KEY (`id`) USING BTREE
-) ENGINE = InnoDB AUTO_INCREMENT = 135 CHARACTER SET = latin1 COLLATE = latin1_swedish_ci ROW_FORMAT = Dynamic;
+) ENGINE = InnoDB AUTO_INCREMENT = 150 CHARACTER SET = latin1 COLLATE = latin1_swedish_ci ROW_FORMAT = Dynamic;
 
 -- ----------------------------
 -- Records of t_pengeluaran
 -- ----------------------------
 INSERT INTO `t_pengeluaran` VALUES (1, '201907230000002', 2, 'OK', 1, '2019-07-23');
-INSERT INTO `t_pengeluaran` VALUES (134, '201907230000003', NULL, NULL, NULL, NULL);
 
 -- ----------------------------
 -- Table structure for t_pengeluaran_detail
@@ -202,7 +201,7 @@ CREATE TABLE `t_pengeluaran_detail`  (
   `source` varchar(50) CHARACTER SET latin1 COLLATE latin1_swedish_ci NULL DEFAULT NULL,
   `keterangan` text CHARACTER SET latin1 COLLATE latin1_swedish_ci NULL,
   PRIMARY KEY (`id`) USING BTREE
-) ENGINE = InnoDB AUTO_INCREMENT = 24 CHARACTER SET = latin1 COLLATE = latin1_swedish_ci ROW_FORMAT = Dynamic;
+) ENGINE = InnoDB AUTO_INCREMENT = 36 CHARACTER SET = latin1 COLLATE = latin1_swedish_ci ROW_FORMAT = Dynamic;
 
 -- ----------------------------
 -- Records of t_pengeluaran_detail

@@ -129,7 +129,7 @@
             <div class="collapse navbar-collapse" id="navbar-collapse">
                 <ul class="nav navbar-nav navbar-right">
                      
-                    <li class="pull-right"><a href="javascript:void(0);" class="js-right-sidebar" data-close="true">    <i class="material-icons">person</i>   </a></li>
+                    <li class="pull-right"><a href="<?php echo base_url('login'); ?>" class="js-right-sidebar btn btn-danger btn-lg" data-close="true">    <i class="material-icons">person</i> Login  </a></li>
                    
                 </ul>
             </div>
