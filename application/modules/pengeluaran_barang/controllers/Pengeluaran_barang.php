@@ -304,8 +304,7 @@ class Pengeluaran_barang extends Parent_Controller {
     echo json_encode($result,TRUE);
   }
   public function hapus_data(){
-    $no_transaksi = $this->input->post('no_transaksi');
-  
+    $no_transaksi = $this->input->post('no_transaksi'); 
  
     $delete_pengeluaran_barang = $this->db->where('no_transaksi',$no_transaksi)->delete('t_pengeluaran');
     $delete_pengeluaran_barang_detail = $this->db->where('no_transaksi',$no_transaksi)->delete('t_pengeluaran_detail');

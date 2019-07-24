@@ -221,7 +221,7 @@
                 <div class="modal-dialog modal-lg" role="document">
                     <div class="modal-content">
                         <div class="modal-header">
-                            <h4 class="modal-title" > Pilih Barng </h4>
+                            <h4 class="modal-title" > Pilih Barang </h4>
                         </div>
                         <div class="modal-body">
                                 <button type="button" class="btn btn-danger" data-dismiss="modal">X Tutup</button>
@@ -229,20 +229,21 @@
                                 <br>
                                 <hr>
 
-                                 <table width="100%" class="table table-bordered table-striped table-hover " id="daftar_barang" >
-  
-                                    <thead>
-                                        <tr> 
-											<th style="width:5%;">Kategori Barang</th>
+                                <table width="100%" class="table table-bordered table-striped table-hover" id="daftar_barang" > 
+                                     <thead>
+                                        <tr>  
+                                            <th style="width:5%;">Kategori Barang</th>
                                             <th style="width:5%;">Sub Kategori Barang</th>
-                                            <th style="width:5%;">Nama Barang</th>                                           
-                                            
-										</tr>
+                                            <th style="width:5%;">Nama Barang</th>    
+                                            <th style="width:12%;">Action </th> 
+                                         </tr>
                                     </thead> 
-                                    <tbody id="daftar_barangx">
-
-                                </tbody>
+                                    <tbody>
+                                        
+                                    </tbody>  
                                 </table> 
+
+ 
                        </div>
                      
                     </div>
@@ -367,25 +368,78 @@
 
     function PilihBarang(){
         $("#PilihBarangModal").modal({backdrop: 'static', keyboard: false,show:true});
+
+
+        var no_transaksix = $("#no_transaksix").val();
+         
+        $('#daftar_barang').DataTable({
+            "processing" : true,
+            "ajax" : {
+                "url" : "<?php echo base_url('barang/item_list'); ?>",
+                "data":{no_transaksix},
+                "type":"POST" ,
+                "dataSrc" : '' 
+            },
+  
+            "columns" : [{
+                "data" : "nama_kategori"
+            },{
+                "data" : "nama_sub_kategori"
+            },{
+                "data" : "nama_barang"
+            },{
+                "data" : "action"
+            }],
+
+            "rowReorder": {
+                "update": false
+            },
+
+            "destroy":true,
+        });
+
+    }
+
+
+    function GetItemList(id){
+        console.log(id);
+        $.get("<?php echo base_url('barang/fetch_item_list/'); ?>"+id,function(result){
+            console.log(result);
+            var parse = JSON.parse(result);
+           
+            $("#id_barang").val(id);
+            $("#nama_barang").val(parse.nama_barang);
+            $("#jkt").html(parse.qty_jkt);
+            $("#sbg").html(parse.qty_subang);
+           
+            $("#PilihBarangModal").modal('hide');
+        });
+
     }
 
        
-    $('#daftar_barang').DataTable( {
-        "ajax": "<?php echo base_url(); ?>barang/fetch_barang" 
-    });
+    // $('#daftar_barang').DataTable( {
+    //     "ajax": "<?php echo base_url(); ?>barang/fetch_barang",
+    //     "rowReorder": {
+    //             "update": false
+    //         },
+    //     "destroy":true,
+    // });
 
-     var daftar_barang = $('#daftar_barang').DataTable();
+    //  var daftar_barang = $('#daftar_barang').DataTable();
      
-        $('#daftar_barang tbody').on('click', 'tr', function () {
-            
-            var content = daftar_barang.row(this).data()
-            console.log(content);
-            $("#nama_barang").val(content[2]);
-            $("#id_barang").val(content[4]);
-            $("#jkt").html(content[5])
-            $("#sbg").html(content[6])
-            $("#PilihBarangModal").modal('hide');
-        } );
+    //     $('#daftar_barang tbody').on('click', 'tr', function () {
+ 
+          
+    //         var content = daftar_barang.row(this).data()
+    //         console.log(content[5]+content[6]);
+    //         alert(content[5]+content[6]);
+    //         $("#nama_barang").val(content[2]);
+    //         $("#id_barang").val(content[4]);
+    //         $("#jkt").html(content[5])
+    //         $("#sbg").html(content[6])
+    //         $("#PilihBarangModal").modal('hide');
+    //     } );
 
  
     function TableListDetail(no_transaksix=null){
@@ -621,8 +675,7 @@
                         }
                     }
                 ).done(function(data) {
-                    swal("Transaksi Dihapus!", "Transaksi berhasil dibatalkan", "success");
-
+                    swal("Transaksi Dihapus!", "Transaksi berhasil dibatalkan", "success"); 
                     $('#example').DataTable().ajax.reload(); 
                     $("#defaultModal").modal('hide'); 
                     $(':input').val('');  

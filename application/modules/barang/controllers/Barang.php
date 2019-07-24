@@ -28,8 +28,42 @@ class Barang extends Parent_Controller {
   	public function fetch_barang(){  
        $getdata = $this->m_barang->fetch_barang();
        echo json_encode($getdata);   
-  	}
+	}
 
+	public function fetch_barang_front(){  
+		$getdata = $this->m_barang->fetch_barang_front();
+		echo json_encode($getdata);   
+	 }
+
+
+	public function item_list(){  
+       
+		$no_transaksix =  $this->input->post('no_transaksix');
+		 
+		  $sql = "select a.*,b.nama_kategori,c.nama_sub_kategori from m_barang a
+		left join m_kategori b on b.id = a.id_kategori
+		left join m_sub_kategori c on c.id = a.id_sub_kategori";
+		  $exsql = $this->db->query($sql)->result();
+					
+		  $dataparse = array();  
+			 foreach ($exsql as $key => $value) {  
+				  $sub_array['nama_kategori'] = $value->nama_kategori;
+				  $sub_array['nama_sub_kategori'] = $value->nama_sub_kategori;  
+				  $sub_array['nama_barang'] = $value->nama_barang;
+				 
+				  $sub_array['action'] =  "<button typpe='button' onclick='GetItemList(".$value->id.");' class = 'btn btn-primary'> <i class='material-icons'>shopping_cart</i> Pilih </button>";  
+	 
+				 array_push($dataparse,$sub_array); 
+			  }  
+		 
+		  echo json_encode($dataparse);
+   
+	  }
+	public function fetch_item_list(){
+		$id = $this->uri->segment(3);
+		$sql = $this->db->where('id',$id)->get('m_barang')->row();
+	    echo json_encode($sql,TRUE);
+	}
 	public function fetch_sub_kategori_barang(){  
   	   
 		$id_kategori =  $this->input->post('id_kategori');

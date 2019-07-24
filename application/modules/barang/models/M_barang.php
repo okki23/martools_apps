@@ -43,6 +43,35 @@ class M_barang extends Parent_Model {
 		    
     }
 
+    public function fetch_barang_front(){
+     $sql = "select a.*,b.nama_kategori,c.nama_sub_kategori from m_barang a
+     left join m_kategori b on b.id = a.id_kategori
+     left join m_sub_kategori c on c.id = a.id_sub_kategori order by a.id asc";
+             
+           $getdata = $this->db->query($sql)->result();
+           $data = array();  
+           $no = 1;
+         foreach($getdata as $row)  
+         {  
+              $sub_array = array();  
+
+              $sub_array[] = $row->nama_kategori;  
+              $sub_array[] = $row->nama_sub_kategori;  
+              $sub_array[] = $row->nama_barang;  
+              $sub_array[] = $row->qty_jkt;
+              $sub_array[] = $row->qty_subang;
+             
+              $data[] = $sub_array;  
+              $no++;
+         }  
+        
+           return $output = array("data"=>$data);
+            
+  }
+
+     
+
+
    
 	 
  
