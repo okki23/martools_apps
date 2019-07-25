@@ -129,7 +129,7 @@
             <div class="collapse navbar-collapse" id="navbar-collapse">
                 <ul class="nav navbar-nav navbar-right">
                      
-                    <li class="pull-right"><a href="<?php echo base_url('login'); ?>" class="js-right-sidebar btn btn-danger btn-lg" data-close="true">    <i class="material-icons">person</i> Login  </a></li>
+                    <li class="pull-right"><a href="javascript:void(0);" class="js-right-sidebar" data-close="true">    <i class="material-icons">person</i>   </a></li>
                    
                 </ul>
             </div>
@@ -171,7 +171,7 @@
                             <div id="container" style="min-width: 310px; height: 400px; margin: 0 auto"></div>
                             </div>
 
-                            
+                          
 
                         </div>
 
@@ -180,30 +180,44 @@
                         <div class="card">
                         <div class="header">
                             <h2>
-                                Daftar Persediaan Barang
+                                Daftar Stok Barang
                             </h2>
-                            
-  
+                           
                         </div>
                         <div class="body">
-                                
-                            <div class="table-responsive">
+                        <div class="table-responsive">
 							   <table class="table table-bordered table-striped table-hover js-basic-example" id="example" >
   
 									<thead>
 										<tr> 
 											<th style="width:5%;">Kategori Barang</th>
                                             <th style="width:5%;">Sub Kategori Barang</th>
-                                            <th style="width:5%;">Nama Barang</th>      
-                                            <th style="width:5%;">Qty Jakarta</th>
-                                            <th style="width:5%;">Qty Subang</th>                                           
-                                           
+                                            <th style="width:5%;">Nama Barang</th>                                           
+                                            <th style="width:10%;">Qty Jakarta</th> 
+                                            <th style="width:10%;">Qty Subang</th> 
 										</tr>
 									</thead> 
+                                    <tbody>
+                                    <?php
+                                        foreach($listingbarang as $k => $v){
+                                            echo "<tr> 
+                                            <td>".$v->nama_kategori."
+                                            <td>".$v->nama_sub_kategori."
+                                            <td>".$v->nama_barang."
+                                            <td>".$v->qty_jkt."
+                                            <td>".$v->qty_subang."
+                                            </tr>";
+                                        }
+                                    ?>
+                                    </tbody>
 								</table> 
                             </div>
+                             
                         </div>
                     </div>
+
+
+
 
            
                     </div>
@@ -222,10 +236,7 @@
 
  <script>
 
-    $('#example').DataTable({
-             
-             "ajax": "<?php echo base_url(); ?>barang/fetch_barang_front", 
-         });
+    $('#example').DataTable();
 
  
     Highcharts.chart('container', {
@@ -248,7 +259,7 @@
     tooltip: {
         headerFormat: '<span style="font-size:10px">{point.key}</span><table>',
         pointFormat: '<tr><td style="color:{series.color};padding:0">{series.name}: </td>' +
-            '<td style="padding:0"><b>{point.y:.1f} Items</b></td></tr>',
+            '<td style="padding:0"><b>{point.y:.1f} mm</b></td></tr>',
         footerFormat: '</table>',
         shared: true,
         useHTML: true

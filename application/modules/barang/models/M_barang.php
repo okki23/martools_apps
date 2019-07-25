@@ -42,7 +42,7 @@ class M_barang extends Parent_Model {
 		   return $output = array("data"=>$data);
 		    
     }
-
+ 
     public function fetch_barang_front(){
      $sql = "select a.*,b.nama_kategori,c.nama_sub_kategori from m_barang a
      left join m_kategori b on b.id = a.id_kategori
@@ -66,10 +66,8 @@ class M_barang extends Parent_Model {
          }  
         
            return $output = array("data"=>$data);
-            
-  }
-
-     
+    }
+  
 
 
    

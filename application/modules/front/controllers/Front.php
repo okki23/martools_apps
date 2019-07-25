@@ -28,7 +28,9 @@ class Front extends Parent_Controller {
 		foreach ($getsbg as $key => $value) {
 			$list_sbg[] = $value->qty_subang;
 		}
-	 
+		$data['listingbarang'] = $this->db->query("select a.*,b.nama_kategori,c.nama_sub_kategori from m_barang a
+		left join m_kategori b on b.id = a.id_kategori
+		left join m_sub_kategori c on c.id = a.id_sub_kategori order by a.id asc")->result();
 		$data['datacat'] =  '['.implode(",", $list_cat).']';
 		$data['datajkt'] =  '['.implode(",", $list_jkt).']';
 		$data['datasbg'] =  '['.implode(",", $list_sbg).']';
