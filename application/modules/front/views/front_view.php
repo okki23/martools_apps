@@ -181,12 +181,7 @@
             <br>
             &nbsp;       
             </div>
-            Choose Period : 
-            <br>
-            <select class="form-control" name="period" id="period"> 
-            </select>
-            <br>
-            &nbsp;  
+             
                 
                         <div class="card">
                         <div class="header">
@@ -276,36 +271,7 @@
 <script src="https://code.highcharts.com/modules/export-data.js"></script>
 
  <script>
-    //  $.get("<?php echo base_url('front/listingperiod'); ?>", function(data, statusText, xheader){
-     
-    //     var $period = $('#period');
-    //     //
-    //     $.each(data, function(key, value) {
-    //     var $option = $("<option/>", {
-    //         value: key,
-    //         text: value
-    //     });
-    //     $period.append($option);
-    //     }); 
-    //  });
-
-    var period = $('#period');
-
-    period.empty();
-
-    period.append('<option selected="true" disabled>Choose State/Province</option>');
-    period.prop('selectedIndex', 0);
-
-    const url = '<?php echo base_url('front/listingperiod'); ?>';
-
-    // Populate dropdown with list of provinces
-    $.getJSON(url, function (data) {
-    $.each(data, function (key, entry) {
-        period.append($('<option></option>').attr('value', entry.id).text(entry.period));
-    })
-    });
-
-
+  
     $('#example').DataTable({
         dom: 'Bfrtip',
         buttons: [

@@ -11,7 +11,7 @@
  Target Server Version : 100316
  File Encoding         : 65001
 
- Date: 29/07/2019 16:47:01
+ Date: 30/07/2019 04:36:28
 */
 
 SET NAMES utf8mb4;
@@ -37,7 +37,7 @@ CREATE TABLE `m_barang`  (
 -- ----------------------------
 INSERT INTO `m_barang` VALUES (1, 'Annual Report 2017', '1', '1', 51, 11, '');
 INSERT INTO `m_barang` VALUES (2, 'Company Profile', '1', '2', 11, 11, '');
-INSERT INTO `m_barang` VALUES (3, 'Buku Sejarah Dahana', '1', '3', 11, 11, 'ORDER');
+INSERT INTO `m_barang` VALUES (3, 'Buku Sejarah Dahana', '1', '3', 11, 6, 'ORDER');
 INSERT INTO `m_barang` VALUES (4, '2018 CORPORATE/EMC', '1', '4', 11, 11, 'ORDER');
 INSERT INTO `m_barang` VALUES (5, '2018 BOM P-100L', '1', '4', 186, 11, '');
 INSERT INTO `m_barang` VALUES (6, '2018 DAHANA ANFO', '1', '4', 56, 11, 'ORDER');
@@ -96,7 +96,7 @@ INSERT INTO `m_barang` VALUES (58, 'Glove Ukuran 26', '2', '30', 15, 11, '');
 INSERT INTO `m_barang` VALUES (59, 'Bordir T. Tisue & Taplak', '2', '31', 40, 11, '');
 INSERT INTO `m_barang` VALUES (60, 'Box Suvenir kosong', '2', '32', 11, 11, '');
 INSERT INTO `m_barang` VALUES (61, 'LM', '2', '32', 43, 11, '');
-INSERT INTO `m_barang` VALUES (62, 'Map Dahana (Putih)', '3', '33', 161, 50, 'ORDER');
+INSERT INTO `m_barang` VALUES (62, 'Map Dahana (Putih)', '3', '33', 161, 40, 'ORDER');
 INSERT INTO `m_barang` VALUES (63, 'Map Dahana (Hitam)', '3', '33', 19, 61, '');
 
 -- ----------------------------
@@ -288,7 +288,12 @@ CREATE TABLE `t_pengeluaran`  (
   `id_pegawai` int(10) NULL DEFAULT NULL,
   `date_assign` date NULL DEFAULT NULL,
   PRIMARY KEY (`id`) USING BTREE
-) ENGINE = InnoDB AUTO_INCREMENT = 152 CHARACTER SET = latin1 COLLATE = latin1_swedish_ci ROW_FORMAT = Dynamic;
+) ENGINE = InnoDB AUTO_INCREMENT = 155 CHARACTER SET = latin1 COLLATE = latin1_swedish_ci ROW_FORMAT = Dynamic;
+
+-- ----------------------------
+-- Records of t_pengeluaran
+-- ----------------------------
+INSERT INTO `t_pengeluaran` VALUES (153, '201907290000001', 2, 'Sudah OK', 1, '2019-07-29');
 
 -- ----------------------------
 -- Table structure for t_pengeluaran_detail
@@ -302,6 +307,12 @@ CREATE TABLE `t_pengeluaran_detail`  (
   `source` varchar(50) CHARACTER SET latin1 COLLATE latin1_swedish_ci NULL DEFAULT NULL,
   `keterangan` text CHARACTER SET latin1 COLLATE latin1_swedish_ci NULL,
   PRIMARY KEY (`id`) USING BTREE
-) ENGINE = InnoDB AUTO_INCREMENT = 40 CHARACTER SET = latin1 COLLATE = latin1_swedish_ci ROW_FORMAT = Dynamic;
+) ENGINE = InnoDB AUTO_INCREMENT = 42 CHARACTER SET = latin1 COLLATE = latin1_swedish_ci ROW_FORMAT = Dynamic;
+
+-- ----------------------------
+-- Records of t_pengeluaran_detail
+-- ----------------------------
+INSERT INTO `t_pengeluaran_detail` VALUES (40, '201907290000001', 62, 10, 'jkt', 'OK');
+INSERT INTO `t_pengeluaran_detail` VALUES (41, '201907290000001', 3, 5, 'jkt', 'OK');
 
 SET FOREIGN_KEY_CHECKS = 1;

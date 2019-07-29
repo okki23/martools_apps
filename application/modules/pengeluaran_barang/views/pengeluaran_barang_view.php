@@ -86,7 +86,7 @@
                                     <div class="input-group">
                                                 <div class="form-line">
                                                     <input type="text" name="nama_instansi" id="nama_instansi" class="form-control" required readonly="readonly" >
-                                                    <input type="text" name="id_instansi" id="id_instansi" required>
+                                                    <input type="hidden" name="id_instansi" id="id_instansi" required>
                                                     
                                                 </div>
                                                 <span class="input-group-addon">
@@ -285,60 +285,87 @@
 
 	
 	
-	<!-- detail data pegawai -->
+	<!-- detail data -->
 	<div class="modal fade" id="DetailModal" tabindex="-1" role="dialog">
-                <div class="modal-dialog" role="document">
+                <div class="modal-dialog modal-lg" role="document">
                     <div class="modal-content">
                         <div class="modal-header">
                             <h4 class="modal-title">Detail Pengeluaran</h4>
                         </div>
                         <div class="modal-body">
-						
-						<table class="table table-responsive">
-                        <tr>
-								<td style="font-weight:bold;"> NIP</td>
-								<td> : </td>
-								<td> <p id="nipdtl"> </p> </td>
-								
-								<td style="font-weight:bold;"> Nama</td>
-								<td> : </td>
-								<td> <p id="namadtl"> </p> </td> 
-							</tr>
-							 
-							<tr>
-								<td style="font-weight:bold;"> Jabatan</td>
-								<td> : </td>
-								<td> <p id="nama_jabatandtl"> </p> </td>
-								
-								<td style="font-weight:bold;"> Telp</td>
-								<td> : </td>
-								<td> <p id="telpdtl"> </p> </td> 
+
+                        <div class="row clearfix">
+
+                        <div class="col-lg-12">
+
+                            <table class="table table-responsive">
+                            <tr>
+                                <td style="font-weight:bold;"> No Transaksi</td>
+                                <td> : </td>
+                                <td> <p id="notrdtl"> </p> </td>
+                                
+                                <td style="font-weight:bold;"> Instansi</td>
+                                <td> : </td>
+                                <td> <p id="instansidtl"> </p> </td> 
                             </tr>
                             
                             <tr>
-								<td style="font-weight:bold;"> Alamat</td>
-								<td> : </td>
-								<td> <p id="alamatdtl"> </p> </td>
-								
-								<td style="font-weight:bold;"> Email</td>
-								<td> : </td>
-								<td> <p id="emaildtl"> </p> </td> 
-							</tr>
-							 
-							<tr>
-								<td style="font-weight:bold;"> Foto  </td> 
-								<td colspan="4">  : </td> 
-							</tr> 
-							<tr>
-								<td colspan="6" align="center">  
-								<img src="" class="img responsive" style="width:50%; height: 50%;" id="foto_dtl">
-								</td>
-							</tr>
+                                <td style="font-weight:bold;"> Nama PIC Instansi</td>
+                                <td> : </td>
+                                <td> <p id="picdtl"> </p> </td>
+                                
+                                <td style="font-weight:bold;"> Kategori Instansi</td>
+                                <td> : </td>
+                                <td> <p id="katinsdtl"> </p> </td> 
+                            </tr>
+
+                            
+                            <tr>
+                                <td style="font-weight:bold;"> Keterangan  </td> 
+                                <td> : </td>
+                                <td> <p id="ketdtl"> </p> </td>
+                                <td style="font-weight:bold;"> Tanggal Keluar</td>
+                                <td> : </td>
+                                <td> <p id="tglkeluardtl"> </p> </td>
+                            </tr> 
+                            <tr>
+                                <td colspan="6"> Penanggung Jawab </td>
+                            </tr>
+                            <tr>
+                                <td style="font-weight:bold;"> Nama  </td> 
+                                <td> : </td>
+                                <td> <p id="namapjdtl"> </p> </td>
+                                <td style="font-weight:bold;"> NIP</td>
+                                <td> : </td>
+                                <td> <p id="nippjdtl"> </p> </td>
+                            </tr> 
+                            </table> 
+
+                            <br>
+
+                            <table width="100%" class="table table-bordered table-striped table-hover " id="tabeldetail" > 
+                                    <thead>
+                                        <tr>  
+                                            <th style="width:15%;">No</th> 
+                                            <th style="width:15%;">Nama Barang</th> 
+                                            <th style="width:15%;">Qty</th> 
+                                            <th style="width:15%;">Source</th> 
+                                            <th style="width:15%;">Keterangan</th> 
+                                         </tr>
+                                    </thead>
+                                    <tbody>
+                                        
+                                    </tbody>  
+                            </table>  
+
+                        </div>
+ 
+                        <!-- No 	Nama Barang 	Qty 	Source 	Keterangan -->
 						 
 							 <div class="modal-footer">
 							  <button type="button" class="btn btn-danger" data-dismiss="modal"> X Tutup </button>
 							 </div>
-						</table>
+					
                            
 					   </div>
                      
@@ -483,22 +510,96 @@
    
 	 function Show_Detail(id){ 
 		$("#DetailModal").modal({backdrop: 'static', keyboard: false,show:true});
+
+        $('#tabeldetail').DataTable({
+            "processing" : true,
+            "ajax" : {
+                "url" : "<?php echo base_url('pengeluaran_barang/listingdetail'); ?>",
+                "data":{id},
+                "type":"POST",
+                dataSrc : '',
+
+            },
+            // No 	Nama Barang 	Qty 	Source 	Keterangan
+            // $sub_array['no'] = $no;
+            //     $sub_array['nama_barang'] = $value->nama_barang;  
+            //     $sub_array['qty'] = $value->qty;
+            //     $sub_array['source'] = $value->src;
+            //     $sub_array['keterangan'] = $value->keterangan; 
+            "columns" : [ {
+                "data" : "no"
+            },{
+                "data" : "nama_barang"
+            },{
+                "data" : "qty"
+            },{
+                "data" : "source"
+            },{
+                "data" : "keterangan"
+            }],
+
+            "rowReorder": {
+                "update": false
+            },
+
+            "destroy":true,
+        });
+    
+
 		$.ajax({
-			 url:"<?php echo base_url(); ?>pengeluaran_barang/detail/"+id,
+			 url:"<?php echo base_url(); ?>pengeluaran_barang/detailmodal/"+id,
 			 type:"GET",
 			 dataType:"JSON", 
 			 success:function(result){  
-                 var nf = new Intl.NumberFormat();
-                 $("#id_jabatandtl").html(result.id_jabatan);
+
+                // {"id":"153","no_transaksi":"201907290000001","id_instansi":"2","keterangan":"Sudah OK","id_pegawai":"1","date_assign":"2019-07-29","pic":"Putra","nama_instansi":"PT.Pindad","alamat":"Jl.Nangka","telp":"021345446","nama":"Admin","nip":"9999999","nama_kategori_instansi":"Pemerintahan"}
+                // <tr>
+				// 				<td style="font-weight:bold;"> No Transaksi</td>
+				// 				<td> : </td>
+				// 				<td> <p id="notrdtl"> </p> </td>
+								
+				// 				<td style="font-weight:bold;"> Instansi</td>
+				// 				<td> : </td>
+				// 				<td> <p id="instansidtl"> </p> </td> 
+				// 			</tr>
+							 
+				// 			<tr>
+				// 				<td style="font-weight:bold;"> Nama PIC Instansi</td>
+				// 				<td> : </td>
+				// 				<td> <p id="picdtl"> </p> </td>
+								
+				// 				<td style="font-weight:bold;"> Tanggal Keluar</td>
+				// 				<td> : </td>
+				// 				<td> <p id="tglkeluardtl"> </p> </td> 
+                //             </tr>
+                //             <tr>
+				// 				<td style="font-weight:bold;"> Nama Penanggung Jawab </td>
+				// 				<td> : </td>
+				// 				<td> <p id="namapjdtl"> </p> </td>
+								
+				// 				<td style="font-weight:bold;"> NIP Penanggung Jawab</td>
+				// 				<td> : </td>
+				// 				<td> <p id="nippjdtl"> </p> </td> 
+                //             </tr>
+                   
+							 
+				// 			<tr>
+				// 				<td style="font-weight:bold;"> Keterangan  </td> 
+                //                 <td> : </td>
+                //                 <td> <p id="ketdtl"> </p> </td>
+                //                 <td coslpan="3"> </td>
+				// 			</tr> 
+              
+                 $("#notrdtl").html(result.no_transaksi);
                  $("#nama_jabatandtl").html(result.nama_jabatan);
-                 $("#nipdtl").html(result.nip); 
-                 $("#namadtl").html(result.nama); 
-                 $("#telpdtl").html(result.telp); 
-                 $("#alamatdtl").html(result.alamat); 
-                 $("#emaildtl").html(result.email); 
-			 	  
-				 $("#foto_dtl").attr("src","upload/"+result.foto);
-				  
+                 $("#instansidtl").html(result.nama_instansi); 
+                 $("#picdtl").html(result.pic); 
+                 $("#tglkeluardtl").html(result.date_assign); 
+                 $("#namapjdtl").html(result.nama); 
+                 $("#nippjdtl").html(result.nip);
+                 $("#ketdtl").html(result.keterangan); 
+                 $("#katinsdtl").html(result.nama_kategori_instansi); 
+			 	   
 			 }
 		 });
 	 }

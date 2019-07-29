@@ -72,6 +72,37 @@ class Pengeluaran_barang extends Parent_Controller {
         echo json_encode($dataparse);
  
     }
+
+
+    public function listingdetail(){  
+      //No 	Nama Barang 	Qty 	Source 	Keterangan
+      $id =  $this->input->post('id');
+       
+      $sql = "select a.*,b.nama_barang, CASE a.source
+      WHEN 'jkt' THEN 'Jakarta'
+      WHEN 'sbg' THEN 'Subang'
+      ELSE NULL
+      END as 'src' from t_pengeluaran_detail a
+      left join m_barang b on b.id = a.id_barang
+                  where a.no_transaksi = '".$id."' ";
+        $exsql = $this->db->query($sql)->result();
+      
+          $dataparse = array();  
+          $no = 1;
+           foreach ($exsql as $key => $value) {  
+                $sub_array['no'] = $no;
+                $sub_array['nama_barang'] = $value->nama_barang;  
+                $sub_array['qty'] = $value->qty;
+                $sub_array['source'] = $value->src;
+                $sub_array['keterangan'] = $value->keterangan; 
+               array_push($dataparse,$sub_array); 
+               $no++;
+            }  
+       
+        echo json_encode($dataparse);
+ 
+    }
+
     public function calc_weight(){
        $data = $this->uri->segment(3);
        $res = 0;
@@ -303,6 +334,18 @@ class Pengeluaran_barang extends Parent_Controller {
  
     
     echo json_encode($result,TRUE);
+  }
+
+  public function detailmodal(){
+    $no_transaksi = $this->uri->segment(3);
+     
+    $sql = "select a.*,c.pic,c.nama_instansi,c.alamat,c.telp,d.nama,d.nip,e.nama_kategori_instansi from t_pengeluaran a
+    left join t_pengeluaran_detail b on b.no_transaksi = a.no_transaksi
+    left join m_instansi c on c.id = a.id_instansi
+    left join m_pegawai d on d.id = a.id_pegawai
+    left join m_kategori_instansi e on e.id = c.id_kategori_instansi where a.no_transaksi = '".$no_transaksi."' ";
+    $parse = $this->db->query($sql)->row();
+    echo json_encode($parse,TRUE);
   }
   public function hapus_data(){
     $no_transaksi = $this->input->post('no_transaksi'); 
