@@ -284,6 +284,69 @@
     </div>
 
 	
+	
+	<!-- detail data pegawai -->
+	<div class="modal fade" id="DetailModal" tabindex="-1" role="dialog">
+                <div class="modal-dialog" role="document">
+                    <div class="modal-content">
+                        <div class="modal-header">
+                            <h4 class="modal-title">Detail Pengeluaran</h4>
+                        </div>
+                        <div class="modal-body">
+						
+						<table class="table table-responsive">
+                        <tr>
+								<td style="font-weight:bold;"> NIP</td>
+								<td> : </td>
+								<td> <p id="nipdtl"> </p> </td>
+								
+								<td style="font-weight:bold;"> Nama</td>
+								<td> : </td>
+								<td> <p id="namadtl"> </p> </td> 
+							</tr>
+							 
+							<tr>
+								<td style="font-weight:bold;"> Jabatan</td>
+								<td> : </td>
+								<td> <p id="nama_jabatandtl"> </p> </td>
+								
+								<td style="font-weight:bold;"> Telp</td>
+								<td> : </td>
+								<td> <p id="telpdtl"> </p> </td> 
+                            </tr>
+                            
+                            <tr>
+								<td style="font-weight:bold;"> Alamat</td>
+								<td> : </td>
+								<td> <p id="alamatdtl"> </p> </td>
+								
+								<td style="font-weight:bold;"> Email</td>
+								<td> : </td>
+								<td> <p id="emaildtl"> </p> </td> 
+							</tr>
+							 
+							<tr>
+								<td style="font-weight:bold;"> Foto  </td> 
+								<td colspan="4">  : </td> 
+							</tr> 
+							<tr>
+								<td colspan="6" align="center">  
+								<img src="" class="img responsive" style="width:50%; height: 50%;" id="foto_dtl">
+								</td>
+							</tr>
+						 
+							 <div class="modal-footer">
+							  <button type="button" class="btn btn-danger" data-dismiss="modal"> X Tutup </button>
+							 </div>
+						</table>
+                           
+					   </div>
+                     
+                    </div>
+                </div>
+    </div>
+            
+    
        
    <script type="text/javascript">
    
@@ -416,6 +479,30 @@
         });
 
     }
+
+   
+	 function Show_Detail(id){ 
+		$("#DetailModal").modal({backdrop: 'static', keyboard: false,show:true});
+		$.ajax({
+			 url:"<?php echo base_url(); ?>pengeluaran_barang/detail/"+id,
+			 type:"GET",
+			 dataType:"JSON", 
+			 success:function(result){  
+                 var nf = new Intl.NumberFormat();
+                 $("#id_jabatandtl").html(result.id_jabatan);
+                 $("#nama_jabatandtl").html(result.nama_jabatan);
+                 $("#nipdtl").html(result.nip); 
+                 $("#namadtl").html(result.nama); 
+                 $("#telpdtl").html(result.telp); 
+                 $("#alamatdtl").html(result.alamat); 
+                 $("#emaildtl").html(result.email); 
+			 	  
+				 $("#foto_dtl").attr("src","upload/"+result.foto);
+				  
+			 }
+		 });
+	 }
+       
 
        
     // $('#daftar_barang').DataTable( {

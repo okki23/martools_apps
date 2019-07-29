@@ -36,5 +36,10 @@ class Front extends Parent_Controller {
 		$data['datasbg'] =  '['.implode(",", $list_sbg).']';
 		$this->load->view('front_view',$data);
 	}
+
+	public function listingperiod(){
+		$data = $this->db->get('m_period')->result();
+		echo json_encode($data,TRUE);
+	}
 }
  

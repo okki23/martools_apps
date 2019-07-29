@@ -36,6 +36,7 @@ class Pengeluaran_barang extends Parent_Controller {
     public function hapus_no_transaksi(){
       $no_transaksi = $this->input->post('no_transaksi');
       echo $no_transaksi;
+ 
       $this->db->query("delete from t_pengeluaran where no_transaksi = '".$no_transaksi."' ");
 
     }
@@ -305,7 +306,17 @@ class Pengeluaran_barang extends Parent_Controller {
   }
   public function hapus_data(){
     $no_transaksi = $this->input->post('no_transaksi'); 
- 
+    
+    $sa = $this->db->query("select * from t_pengeluaran_detail where no_transaksi = '".$no_transaksi."' ")->result();
+    foreach($sa as $k=>$v){
+      if($v->source == 'jkt'){
+        $this->db->query("update m_barang set qty_jkt = qty_jkt + '".$v->qty."' ");
+      }else{
+        $this->db->query("update m_barang set qty_subang = qty_subang + '".$v->qty."' ");
+      }
+      
+    }
+
     $delete_pengeluaran_barang = $this->db->where('no_transaksi',$no_transaksi)->delete('t_pengeluaran');
     $delete_pengeluaran_barang_detail = $this->db->where('no_transaksi',$no_transaksi)->delete('t_pengeluaran_detail');
      

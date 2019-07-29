@@ -101,7 +101,7 @@ class Barang extends Parent_Controller {
 	 
 	public function hapus_data(){
 		$id = $this->uri->segment(3);  
-    
+	
 
     $sqlhapus = $this->m_barang->hapus_data($id);
 		

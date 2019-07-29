@@ -29,7 +29,10 @@
     <link href="<?php echo base_url(); ?>assets/css/sweetalert.css" rel="stylesheet">
    <!--  <link href="<?php echo base_url(); ?>assets/css/orgchart.css" rel="stylesheet"> -->
     <link href="<?php echo base_url(); ?>assets/plugins/bootstrap-material-datetimepicker/css/bootstrap-material-datetimepicker.css" rel="stylesheet" />
-
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-datepicker/1.3.0/css/datepicker.min.css" rel="stylesheet" />
+    
+  
+     
     <!-- AdminBSB Themes. You can choose a theme from css/themes instead of get all themes -->
     <link href="<?php echo base_url(); ?>assets/css/themes/all-themes.css" rel="stylesheet" />
 	
@@ -43,7 +46,9 @@
    
     <!-- Bootstrap Core Js -->
     <script src="<?php echo base_url(); ?>assets/plugins/bootstrap/js/bootstrap.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-datepicker/1.3.0/js/bootstrap-datepicker.min.js"></script>
 
+     
     <script src="<?php echo base_url(); ?>assets/js/sweetalert.js"></script>
     <!-- Select Plugin Js -->
     <script src="<?php echo base_url(); ?>assets/plugins/bootstrap-select/js/bootstrap-select.js"></script>
@@ -244,9 +249,9 @@
                         </a>
                     </li>
                     <li>
-                        <a href="<?php echo base_url('stock_realtime'); ?>">
+                        <a href="<?php echo base_url('report_monthly'); ?>">
                            <i class="material-icons">dns</i>
-                            <span>Stock Realtime</span>
+                            <span>Laporan Bulanan</span>
                         </a>
                     </li> 
                      

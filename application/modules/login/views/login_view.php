@@ -2,14 +2,15 @@
 defined('BASEPATH') OR exit('No direct script access allowed');
 ?>
 
-<!DOCTYPE html>
+ <!DOCTYPE html>
 <html>
 
 <head>
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=Edge">
     <meta content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no" name="viewport">
-    <title> Sistem Aplikasi Inventory </title>
+    <title>Sistem Informasi Inventory PT.Dahana </title>
+    <!-- Favicon-->
    
     <!-- Google Fonts -->
     <link href="https://fonts.googleapis.com/css?family=Roboto:400,700&subset=latin,cyrillic-ext" rel="stylesheet" type="text/css">
@@ -17,58 +18,64 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 
     <!-- Bootstrap Core Css -->
     <link href="<?php echo base_url(); ?>assets/plugins/bootstrap/css/bootstrap.css" rel="stylesheet">
- 
+
+    <!-- Waves Effect Css -->
+    <link href="<?php echo base_url(); ?>assets/plugins/node-waves/waves.css" rel="stylesheet" />
+
+    <!-- Animation Css -->
+    <link href="<?php echo base_url(); ?>assets/plugins/animate-css/animate.css" rel="stylesheet" />
+
+    <!-- Morris Chart Css-->
+    <link href="<?php echo base_url(); ?>assets/plugins/morrisjs/morris.css" rel="stylesheet" />
+
     <!-- Custom Css -->
     <link href="<?php echo base_url(); ?>assets/css/style.css" rel="stylesheet">
 
     <!-- AdminBSB Themes. You can choose a theme from css/themes instead of get all themes -->
     <link href="<?php echo base_url(); ?>assets/css/themes/all-themes.css" rel="stylesheet" />
-    <style>
-        .bg { background:url('assets/images/backlogin.jpg') center; height: 100vh; background-size: cover; }
-            .login {}
-            .login a {}
-            .login input { background: #fff; border: none; margin: 10px 0px; padding:20px;     height: 50px; }
-             
-            .login-social ul { list-style-type: none; margin: 0; padding: 0;}
-            .login-social ul li { float: left; text-align: center;  margin-top: 20px;  }
-            .login-social ul li a { display: block; width:35px; height: 35px;   margin: 5px;  color: #fff; font-size: 21px;  line-height: 35px;}
-            .login-social ul li.facebook { background: #3B5998  ; }
-            .login-social ul li.google { background: #dd4b39 ; }
-            .login-social ul li.twitter { background: #00aced ;}
-    </style>
+
     
 </head>
-<body>
-        <form id="sign_in" action="<?php echo base_url('login/autentikasi'); ?>" method="POST" enctype="multipart/form-data">
-        <div class="container-fluid"> 
-           <div class="row ">
-               <div class="col-sm-6 bg">
-                   
-               </div>
-               <div class="col-sm-6 bg-dark text-white">
-                   <div class="row">
-                       <div class="col-md-12 col-sm-10 offset-sm-1 offset-md-2">
-                           <h4 align="center">Sistem Aplikasi Inventory Martools.</h4>
-                           <p align="center">Aplikasi inventory management system yang dirancang untuk mengatur inventaris stok barang.</p>
-                       
-                          <div class="login">
-                           
-                             
-                           <form action="">
-                                
-                               <input type="text" name="username" id="username" class="form-control" required placeholder="Username">
-                               <input type="password" name="password" id="password" class="form-control" required placeholder="Password">
-                                
-                               <button class="btn btn-block bg-blue waves-effect" type="submit">Masuk</button>
-                        </form>
-                        
-                          </div>
-                       </div>
-                   </div>
-               </div>
-           </div>
-       </div>	 
-        </form>
+<body class="login-page">
+    <div class="login-box">
+        <div class="logo">
+           
+        </div>
+        <div class="card">
+            <div class="body">
+
+                <form id="sign_in" action="<?php echo base_url('login/autentikasi'); ?>" method="POST" enctype="multipart/form-data">
+				
+			 
+                    <div class="msg"><b>Sistem Informasi Inventory PT.Dahana</b> </div>
+                    <div class="input-group">
+                        <span class="input-group-addon">
+                            <i class="material-icons">person</i>
+                        </span>
+                        <div class="form-line">
+                            <input type="text" class="form-control" name="username" placeholder="Username" required autofocus>
+                        </div>
+                    </div>
+                    <div class="input-group">
+                        <span class="input-group-addon">
+                            <i class="material-icons">lock</i>
+                        </span>
+                        <div class="form-line">
+                            <input type="password" class="form-control" name="password" placeholder="Password" required>
+                        </div>
+                    </div>
+					 
+                    <div class="row"> 
+                        <div class="col-lg-12">
+                            <button class="btn btn-block bg-blue waves-effect" type="submit">Masuk</button>
+                        </div>
+                         
+                    </div>
+                    
+                </form>
+            </div>
+        </div>
+    </div>
 
     <!-- Jquery Core Js -->
     <script src="<?php echo base_url(); ?>assets/plugins/jquery/jquery.min.js"></script>

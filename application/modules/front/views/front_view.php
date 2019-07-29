@@ -36,6 +36,7 @@
     <link href="<?php echo base_url(); ?>assets/css/themes/all-themes.css" rel="stylesheet" />
 	
 	<link href="<?php echo base_url(); ?>assets/css/card_custom.css" rel="stylesheet" />
+    <link href="https://cdn.datatables.net/buttons/1.5.6/css/buttons.dataTables.min.css" rel="stylesheet" />
     
     <!-- Jquery Core Js -->
     <script src="https://code.jquery.com/jquery-2.2.4.js" integrity="sha256-iT6Q9iMJYuQiMWNd9lDyBUStIq/8PuOW33aOqmvFpqI=" crossorigin="anonymous"></script>
@@ -58,15 +59,17 @@
 
     <!-- Jquery DataTable Plugin Js -->
     <script src="<?php echo base_url(); ?>assets/plugins/jquery-datatable/jquery.dataTables.js"></script>
+    
+ 
 
     <script src="<?php echo base_url(); ?>js/jquery.dataTables.min.js"></script>
-    <script src="<?php echo base_url(); ?>js/dataTables.buttons.min.js"></script>
-    <script src="<?php echo base_url(); ?>js/buttons.flash.min.js"></script>
-    <script src="<?php echo base_url(); ?>js/jszip.min.js"></script>
-    <script src="<?php echo base_url(); ?>js/pdfmake.min.js"></script>
-    <script src="<?php echo base_url(); ?>js/vfs_fonts.js"></script>
-    <script src="<?php echo base_url(); ?>js/buttons.html5.min.js"></script>
-    <script src="<?php echo base_url(); ?>js/buttons.print.min.js"></script>
+    <script src="https://cdn.datatables.net/buttons/1.5.6/js/dataTables.buttons.min.js"></script>
+    <script src="https://cdn.datatables.net/buttons/1.5.6/js/buttons.flash.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jszip/3.1.3/jszip.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/pdfmake/0.1.53/pdfmake.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/pdfmake/0.1.53/vfs_fonts.js"></script>
+    <script src="https://cdn.datatables.net/buttons/1.5.6/js/buttons.html5.min.js"></script>
+    <script src="https://cdn.datatables.net/buttons/1.5.6/js/buttons.print.min.js"></script>
     <script src="<?php echo base_url(); ?>js/buttons.colVis.min.js"></script>
     <script src="<?php echo base_url(); ?>js/filterDropDown.js"></script> 
     <script src="<?php echo base_url(); ?>assets/js/dataTables.rowsGroup.js"></script>
@@ -128,13 +131,43 @@
             </div>
             <div class="collapse navbar-collapse" id="navbar-collapse">
                 <ul class="nav navbar-nav navbar-right">
-                     
-                    <li class="pull-right"><a href="javascript:void(0);" class="js-right-sidebar" data-close="true">    <i class="material-icons">person</i>   </a></li>
+                <li class="pull-right"><a href="javascript:void(0);" class="js-right-sidebar" data-close="true">    <i class="material-icons">person</i>   </a></li>
+                <!-- <li class="pull-right"> <a href="<?php echo base_url('login'); ?>" class="btn btn-warning btn-lg"> <i class="material-icons">person</i>  Login </a> </li>  -->
+                    <!-- <li class="pull-right"><a href="javascript:void(0);" class="js-right-sidebar" data-close="true">    <i class="material-icons">person</i>   </a></li> -->
                    
                 </ul>
             </div>
         </div>
     </nav>
+
+    <aside id="rightsidebar" class="right-sidebar">
+      
+            <div class="tab-content">
+             
+                    <div class="demo-settings">
+                        <p> Welcome <?php echo $this->session->userdata('username') . " !"; ?> </p>
+                        <p> Level :  <?php echo level_help($this->session->userdata('level')); ?> </p>
+                         
+                        <div align="center">
+                            <img src="<?php echo base_url('upload/'.$this->session->userdata('foto')); ?>" style="width:100px; height:100px;">
+                        </div>
+ 
+                        <ul class="demo-choose-skin">
+                       
+                         <a href="<?php echo base_url('login/logout'); ?>">
+                        <li>
+                          
+                           <i class="material-icons">power_settings_new</i>
+                            <span align="center">Keluar</span>
+                         
+                        </li>
+                          </a>
+                       
+                        </ul>
+                    </div>
+                
+            </div>
+        </aside>
     <!-- #Top Bar -->
     
     <section>
@@ -148,6 +181,12 @@
             <br>
             &nbsp;       
             </div>
+            Choose Period : 
+            <br>
+            <select class="form-control" name="period" id="period"> 
+            </select>
+            <br>
+            &nbsp;  
                 
                         <div class="card">
                         <div class="header">
@@ -224,6 +263,8 @@
                 </div>
             </div>
                   </div>
+
+                  
 </section>
  
  
@@ -235,8 +276,42 @@
 <script src="https://code.highcharts.com/modules/export-data.js"></script>
 
  <script>
+    //  $.get("<?php echo base_url('front/listingperiod'); ?>", function(data, statusText, xheader){
+     
+    //     var $period = $('#period');
+    //     //
+    //     $.each(data, function(key, value) {
+    //     var $option = $("<option/>", {
+    //         value: key,
+    //         text: value
+    //     });
+    //     $period.append($option);
+    //     }); 
+    //  });
 
-    $('#example').DataTable();
+    var period = $('#period');
+
+    period.empty();
+
+    period.append('<option selected="true" disabled>Choose State/Province</option>');
+    period.prop('selectedIndex', 0);
+
+    const url = '<?php echo base_url('front/listingperiod'); ?>';
+
+    // Populate dropdown with list of provinces
+    $.getJSON(url, function (data) {
+    $.each(data, function (key, entry) {
+        period.append($('<option></option>').attr('value', entry.id).text(entry.period));
+    })
+    });
+
+
+    $('#example').DataTable({
+        dom: 'Bfrtip',
+        buttons: [
+            'copy', 'csv', 'excel', 'pdf', 'print'
+        ]
+    });
 
  
     Highcharts.chart('container', {
@@ -259,7 +334,7 @@
     tooltip: {
         headerFormat: '<span style="font-size:10px">{point.key}</span><table>',
         pointFormat: '<tr><td style="color:{series.color};padding:0">{series.name}: </td>' +
-            '<td style="padding:0"><b>{point.y:.1f} mm</b></td></tr>',
+            '<td style="padding:0"><b>{point.y:.1f} Item(s)</b></td></tr>',
         footerFormat: '</table>',
         shared: true,
         useHTML: true

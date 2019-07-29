@@ -257,6 +257,7 @@
 		$('#example').DataTable({
              
 			"ajax": "<?php echo base_url(); ?>sub_kategori_barang/fetch_sub_kategori_barang",
+            'rowsGroup': [0] ,
                 
 		});
 

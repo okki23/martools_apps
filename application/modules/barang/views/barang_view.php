@@ -75,7 +75,13 @@
                                                 </span>
                                     </div>
 
-									<div class="form-group">
+                                	<div class="form-group">
+                                        <div class="form-line">
+                                            <input type="text" name="period" id="period" class="datepickerperiod form-control" placeholder="Period" />
+                                        </div>
+                                    </div>
+                                    
+                                    <div class="form-group">
                                         <div class="form-line">
                                             <input type="text" name="nama_barang" id="nama_barang" class="form-control" placeholder="Nama Barang" />
                                         </div>
@@ -229,6 +235,8 @@
   
  
    <script type="text/javascript"> 
+     
+
     function Detail(id){
         $("#DetailModal").modal({backdrop: 'static', keyboard: false,show:true});
  
@@ -259,8 +267,7 @@
             $("#id_sub_kategori").val(id);
             $("#nama_sub_kategori").val(parse.nama_sub_kategori);
             $("#CariSubKategoriModal").modal('hide');
-        });
-
+        }); 
     }
 
  
@@ -301,10 +308,8 @@
     // cari direktorat
     $('#daftar_kategori').DataTable( {
             "ajax": "<?php echo base_url(); ?>kategori_barang/fetch_kategori_barang"           
-    });
+    }); 
 
-     
-     
     function CariKategori(){
         $("#CariKategoriModal").modal({backdrop: 'static', keyboard: false,show:true});
     } 
@@ -439,6 +444,7 @@
 		$('#example').DataTable({
              
 			"ajax": "<?php echo base_url(); ?>barang/fetch_barang", 
+            'rowsGroup': [0,1] ,
 		});
 
 
