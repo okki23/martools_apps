@@ -243,15 +243,15 @@
                         <ul class="ml-menu">
                  
                     <li>
-                        <a href="<?php echo base_url('pengeluaran_barang'); ?>">
+                        <a href="<?php echo base_url('report_out'); ?>">
                            <i class="material-icons">dns</i>
                             <span>Pengeluaran Barang</span>
                         </a>
                     </li>
                     <li>
-                        <a href="<?php echo base_url('report_monthly'); ?>">
+                        <a href="<?php echo base_url('report'); ?>">
                            <i class="material-icons">dns</i>
-                            <span>Laporan Bulanan</span>
+                            <span>Laporan Stock Realtime</span>
                         </a>
                     </li> 
                      
